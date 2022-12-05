@@ -14,11 +14,6 @@ EMAIL_PORT = "<your-email-port>"
 EMAIL_USER = "<your-email-username>"
 EMAIL_PASSWORD = "<your-email-password>"
 
-TWILIO_ACCOUNT_SID = "<your-account-sid>"
-TWILIO_AUTH_TOKEN = "<your-auth-token>"
-TWILIO_PHONE_NUMBER = "<your-twilio-phone-number>"
-MY_PHONE_NUMBER = "<your-phone-number>"
-
 api = REST(API_KEY, SECRET_KEY)
 email_server = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
 email_server.starttls()
@@ -72,11 +67,6 @@ def send_order_notification(order):
   msg["To"] = EMAIL_USER
 
   email_server.send_message(msg)
-
-  message = twilio_client.messages.create(
-    body="Your order for {} {} has been executed at {}.".format(order.qty, order.symbol, order.filled_at),
-    from_=TWILIO_PHONE_NUMBER,
-    to=MY_PHONE_NUMBER
 
 def trade_options(option_contract_id, strategy):
   dark_pool_orders = detect_dark_pool_orders(option_contract_id)
