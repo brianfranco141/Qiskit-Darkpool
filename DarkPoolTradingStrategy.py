@@ -10,7 +10,7 @@ API_KEY = "<your-api-key>"
 SECRET_KEY = "<your-secret-key>"
 
 EMAIL_HOST = "<your-email-host>"
-EMAIL_PORT = <your-email-port>
+EMAIL_PORT = "<your-email-port>"
 EMAIL_USER = "<your-email-username>"
 EMAIL_PASSWORD = "<your-email-password>"
 
