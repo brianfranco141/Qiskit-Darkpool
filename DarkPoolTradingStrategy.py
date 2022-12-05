@@ -89,5 +89,5 @@ def trade_options(option_contract_id, strategy):
     else:
   exit()
 
-trade_options(<option-contract-id>, "quantum")
+trade_options(<option-contract-id>, "quantum") 
 
