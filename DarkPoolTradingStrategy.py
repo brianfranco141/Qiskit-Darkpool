@@ -2,17 +2,9 @@ from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
 from qiskit import execute, Aer
 from alpaca_trade_api import REST
 import matplotlib.pyplot as plt
-import smtplib
-from email.mime.text import MIMEText
-from twilio.rest import Client
 
 API_KEY = "<your-api-key>"
 SECRET_KEY = "<your-secret-key>"
-
-EMAIL_HOST = "<your-email-host>"
-EMAIL_PORT = "<your-email-port>"
-EMAIL_USER = "<your-email-username>"
-EMAIL_PASSWORD = "<your-email-password>"
 
 api = REST(API_KEY, SECRET_KEY)
 email_server = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
@@ -60,13 +52,6 @@ def visualize_order_flow(option_contract_id):
   plt.plot(x, y)
   plt.show()
 
-def send_order_notification(order):
-  msg = MIMEText("Your order for {} {} has been executed at {}.".format(order.qty, order.symbol, order.filled_at))
-  msg["Subject"] = "Order Notification"
-  msg["From"] = EMAIL_USER
-  msg["To"] = EMAIL_USER
-
-  email_server.send_message(msg)
 
 def trade_options(option_contract_id, strategy):
   dark_pool_orders = detect_dark_pool_orders(option_contract_id)
